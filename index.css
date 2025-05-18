@@ -1,0 +1,160 @@
+:root {
+    overflow: hidden;
+}
+
+::selection {
+    background: white;
+    animation: rainbow-background 2s linear infinite forwards;
+}
+
+::moz-selection {
+    background: white;
+    animation: rainbow-background 2s linear infinite forwards;
+}
+
+body {
+    justify-self: center;
+    text-align: center;
+    align-content: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+button {
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    border-color: black;
+}
+
+.container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    transform-style: preserve-3d;
+    perspective: 50px;
+}
+
+.title-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-200%);
+    transform-style: preserve-3d;
+    perspective: 50px;
+}
+
+.main-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 70%;
+    height: 70%;
+}
+
+h1 {
+    animation: pulse 5s ease-in-out infinite;
+    opacity: 100%;
+}
+
+.special-message-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    font-size: 18rem;
+    text-wrap: nowrap;
+    animation: NOT 60s ease-in 1 forwards;
+    opacity: 100%;
+    color: white;
+    transform-style: preserve-3d;
+    perspective: 50px;
+}
+
+.cube {
+    transform-style: preserve-3d;
+    perspective: inherit;
+}
+
+.special-message {
+    animation: rainbow .1s steps(3) infinite forwards;
+}
+
+.bottom-bar {
+    transform-style: preserve-3d;
+    perspective: 100px;
+    position: absolute;
+    left: 50%;
+    bottom: -20%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-family: monospace;
+}
+
+.bottom-bar-text {
+    transform: rotateY(5deg);
+}
+
+.coordinates {
+    transform-style: preserve-3d;
+    text-wrap: nowrap;
+}
+
+.coordinates > p {
+    transform: rotateY(-10deg);
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: black;
+        color: white;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 100%;
+    }
+
+    50% {
+        opacity: 30%;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
+@keyframes NOT {
+    0% {
+        opacity: 0%;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
+@keyframes rainbow {
+    0% {color: red;}
+    33% {color: green;}
+    66% {color: blue;}
+    100% {color: red;}
+}
+
+@keyframes rainbow-background {
+    0% {background: orange;}
+    10% {background: purple;}
+    20% {background: red;}
+    30% {background: cadetblue;}
+    40% {background: yellow;}
+    50% {background: coral;}
+    60% {background: green;}
+    70% {background: cyan;}
+    80% {background: deeppink;}
+    90% {background: dodgerblue;}
+    100% {background: orange;}
+}

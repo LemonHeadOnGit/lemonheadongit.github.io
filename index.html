@@ -6,24 +6,81 @@
       <meta name="description" content="The homepage for LemonHeadOnGit.">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>LemonHeadOnGit | Homepage</title>
-      <style>
-         body{
-               background-image: url(https://cdn.betterttv.net/emote/5c6934c724de827d9bbb4723/3x);
-               background-size: cover;
-            }
-      </style>
+      <link rel="stylesheet" href="index.css"/>
    </head>
-   <body align="center">
-      <audio autoplay loop>
-         <source src="slugabed-levitating.mp3" type="audio/mpeg">
-       Your browser does not support the audio element.
-       </audio>
-      <h1>Once grief enters your life, it never leaves</h1>
-      <canvas width = "570" height = "70" id = "my_Canvas"></canvas>
-      <h2>Listen to the void{null} podcast!!!!!</h2>
-      <a href="https://www.youtube.com/channel/UCSf5z2znVRRSgzI-LQizyxQ">Listen to it here!</a>
+   <body>
+
+      
+      <div class="main-content">
+         <div class="title-container">
+            <h1 id="splashtext" class="parallax" data-value="5"></h1>
+            <h2 class="parallax" data-value="5">rr</h2>
+         </div>
+         
+         <div class="container">
+            <canvas width = "500" height = "300" id = "my_Canvas" data-value="5" class="parallax cube"></canvas>
+         </div>
+         <div class="bottom-bar">
+            <div class="bottom-bar-text">
+               <h2 data-value="2">Slugabed</h2>
+               <h2 data-value="2"> - Levitating above my own useless body</h2>
+               <audio autoplay loop>
+                  <source src="slugabed-levitating.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+               </audio>
+            </div>
+            <div class="coordinates">
+               <p id="xval" data-value="2">START MOVING YOUR MOUSE</p>
+               <p id="yval" data-value="2">START MOVING YOUR MOUSE</p>
+            </div>
+         </div>
+         <div class="special-message-container">
+            <h2 class="special-message parallax" data-value="1">GET OUT</h2>
+         </div>
+      </div>
 
       <script>
+         var splashtext = [
+            "Once grief enters your life, it never leaves.",
+            "No way an ominous cube...",
+            "Type. Compile. Debug.",
+            "it spin (4ever)",
+            "Feel free to screnshot",
+            "\"\"",
+            "IF YOU LEAVE THIS PAGE RUNNING FOR 4 HOURS SOMETHING WILL HAPPEN..."
+         ]
+
+         var item = splashtext[Math.floor(Math.random()*splashtext.length)];
+
+         document.getElementById("splashtext").innerHTML = item;        
+         
+         document.addEventListener("mousemove", parallax);
+
+         window.onresize = getparams;
+
+         var windowWidth = window.innerWidth;
+         var windowHeight = window.innerHeight;
+
+         function getparams() {
+            windowWidth = window.innerWidth;
+            windowHeight = window.innerHeight;
+         }
+
+         function parallax(e) {
+            document.getElementById("xval").innerHTML = "Offset X: " + (e.clientX - (.5 * windowWidth));
+            document.getElementById("yval").innerHTML = "Offset Y: " + (e.clientY - (.5 * windowHeight));
+
+            document.querySelectorAll(".parallax").forEach(function(move) {
+               var moving_value = move.getAttribute("data-value");
+
+               var x = (((e.clientX - (.5 * windowWidth)) * moving_value) / 250);
+               var y = (((e.clientY - (.5 * windowHeight)) * moving_value) / 250);
+
+               move.style.transform = "translateX(" + x*5 + "px) translateY(" + y*5 + "px) rotateY(" + x*-.5 + "deg) rotateX(" + y*.5 + "deg)";
+            });
+         }
+
+         /*==================== CUBE =======================*/
          /*============= Creating a canvas =================*/
          var canvas = document.getElementById('my_Canvas');
          gl = canvas.getContext('experimental-webgl');
@@ -191,14 +248,14 @@
          var animate = function(time) {
 
             var dt = time-time_old;
-            rotateZ(mov_matrix, dt*0.005);//time
-            rotateY(mov_matrix, dt*0.002);
-            rotateX(mov_matrix, dt*0.003);
+            rotateZ(mov_matrix, dt*0.000);//time
+            rotateY(mov_matrix, dt*0.0003);
+            rotateX(mov_matrix, dt*0.000);
             time_old = time;
 
             gl.enable(gl.DEPTH_TEST);
             gl.depthFunc(gl.LEQUAL);
-            gl.clearColor(0.5, 0.5, 0.5, 0.9);
+            gl.clearColor(0.0, 0.0, 0.0, 0.0);
             gl.clearDepth(1.0);
 
             gl.viewport(0.0, 0.0, canvas.width, canvas.height);
@@ -213,9 +270,5 @@
          }
          animate(0);
       </script>
-      </br>
-      </br>
-      </br>
-      <button type="button" onclick="location.href='https://lemonheadongit.github.io/PythonPlanner'">PythonPlanner</button>
    </body>
 </html>
