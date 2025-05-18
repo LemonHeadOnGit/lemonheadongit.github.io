@@ -65,7 +65,7 @@ h1 {
     transform: translateX(-50%) translateY(-50%);
     font-size: 18rem;
     text-wrap: nowrap;
-    animation: NOT 60s ease-in 1 forwards;
+    animation: NOT 14400s ease-in 1 forwards;
     opacity: 100%;
     color: white;
     transform-style: preserve-3d;
