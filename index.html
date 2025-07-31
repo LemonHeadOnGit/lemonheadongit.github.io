@@ -24,8 +24,8 @@
             <div class="bottom-bar-text">
                <h2 data-value="2">Slugabed</h2>
                <h2 data-value="2"> - Levitating above my own useless body</h2>
-               <audio autoplay loop>
-                  <source src="slugabed-levitating.mp3" type="audio/mpeg">
+               <audio autoplay loop id="music">
+                  <source src="music.mp3" type="audio/mpeg">
                 Your browser does not support the audio element.
                </audio>
             </div>
@@ -47,12 +47,34 @@
             "it spin (4ever)",
             "Feel free to screnshot",
             "\"\"",
+	    "Contributed to by EvalynStanley",
+	    "THERE IS TWO OF THEM!?",
             "IF YOU LEAVE THIS PAGE RUNNING FOR 4 HOURS SOMETHING WILL HAPPEN..."
          ]
 
          var item = splashtext[Math.floor(Math.random()*splashtext.length)];
 
-         document.getElementById("splashtext").innerHTML = item;        
+         document.getElementById("splashtext").innerHTML = item;
+
+	 let music = document.getElementById("music");
+	 music.volume = 0.2;
+
+	 var shouldPlaySpecial = false;
+
+	 window.addEventListener('keydown', function(event) {
+		 const key= event.key.toLowerCase();
+
+		 if (key === '2') {
+		 	shouldPlaySpecial = !shouldPlaySpecial;
+
+		 	if (shouldPlaySpecial) {
+			 	music.src="special-tuah.mp3";
+		 	} else {
+			 	music.src="music.mp3";
+		 	}
+		 }
+	 });
+	
          
          document.addEventListener("mousemove", parallax);
 
